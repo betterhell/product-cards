@@ -1,4 +1,4 @@
-Showcases of products.
+Showcase of products.
 
 Creating with:
 
