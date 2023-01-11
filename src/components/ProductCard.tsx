@@ -43,6 +43,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   };
 
+  const discountPrice =
+    discountPercentage !== null
+      ? (price - (price / 100) * discountPercentage).toFixed()
+      : price;
+
   const styles = {
     transform: `translate3d(-${currentSliderIndex * 100}%, 0, 0)`,
     transitionDuration: `1000ms`,
@@ -73,8 +78,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <NavLink to={`/product/${id}`}>
         <h1 className="text-center text-lg font-bold">{title}</h1>
       </NavLink>
-      <h3 className="text-center font-medium">{price} $</h3>
-      <p>{description}</p>
+      <div className="flex justify-center gap-3">
+        <h2 className="text-xl font-bold">{discountPrice}</h2>
+        <h3 className="font- line-through">{price}$</h3>
+      </div>
+
+      <p className="">{description}</p>
 
       {images.length < 2 ? null : (
         <div className="bg-black ">
