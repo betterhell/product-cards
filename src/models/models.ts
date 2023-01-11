@@ -14,9 +14,13 @@ export interface Product {
   id: number;
   title: string;
   price: number;
+  discountPercentage: number | null;
+  rating: number;
+  stock: number;
+  brand: string;
   category: string;
   description: string;
-  image: string;
+  images: [];
 }
 
 export enum Status {

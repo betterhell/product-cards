@@ -10,7 +10,7 @@ export const useProductStore = create<ProductState>()((set, get) => ({
     set({ status: Status.PENDING });
 
     axios
-      .get<any>(`https://fakestoreapi.com/products/${productId}`)
+      .get<any>(`https://dummyjson.com/products/${productId}`)
       .then(({ data }) => {
         set({ currentProduct: data, status: Status.SUCCESS });
       })
