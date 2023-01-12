@@ -20,7 +20,7 @@ export interface Product {
   brand: string;
   category: string;
   description: string;
-  images: [];
+  images: string[];
 }
 
 export enum Status {

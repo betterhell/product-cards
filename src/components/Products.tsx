@@ -8,7 +8,7 @@ const Products = () => {
   console.log(allProducts);
 
   return (
-    <div className="container grid grid-cols-5 gap-5">
+    <div className="container flex flex-wrap justify-center gap-5">
       {allProducts?.map((product: Product) => (
         <ProductCard key={product.id} product={product} />
       ))}

@@ -16,7 +16,7 @@ export const useProductStore = create<ProductState>()((set, get) => ({
       })
       .catch((error) => {
         set({ status: Status.FAILURE });
-        console.log(get().status, error);
+        console.log(error);
       });
   },
 }));

@@ -14,8 +14,6 @@ const ProductsPage = () => {
     }
   }, [getCurrentProduct, id]);
 
-  console.log(status);
-
   return (
     <div className="container mx-auto flex justify-center pt-5">
       {status === Status.PENDING && <h1>Loading...</h1>}

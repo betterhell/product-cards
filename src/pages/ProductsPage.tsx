@@ -11,7 +11,7 @@ const ProductsPage = () => {
   }, [getAllProducts]);
 
   return (
-    <div className="container mx-auto flex justify-center pt-5">
+    <div className="container mx-auto flex grid flex-wrap justify-items-center py-20 ">
       {status === Status.PENDING && <h1>Loading...</h1>}
       {status === Status.SUCCESS && <Products />}
       {status === Status.FAILURE && <h1>Something wrong, try again later</h1>}

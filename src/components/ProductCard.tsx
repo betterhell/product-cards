@@ -54,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="item relative m-1 flex h-[500px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
         <div style={styles} className="flex">
           {images?.map((image, index) => (
