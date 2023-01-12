@@ -1,8 +1,12 @@
 import { useProductStore } from "../store/product.store";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useCartStore } from "../store/cart.store";
+import { useProductsStore } from "../store/products.store";
 
 const Product = () => {
   const { currentProduct } = useProductStore();
+  const { allProducts, getAllProducts } = useProductsStore();
+  const { addToCart, counter } = useCartStore();
   const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
 
   const {
@@ -26,6 +30,10 @@ const Product = () => {
   const selectCurrentSlide = (index: number) => {
     setCurrentSliderIndex(index);
   };
+
+  useEffect(() => {
+    getAllProducts();
+  }, [getAllProducts]);
 
   return (
     <div className="item my-20 flex h-[700px] w-full justify-around border-2 p-5">
@@ -56,7 +64,10 @@ const Product = () => {
           <h2 className="text-center text-6xl font-bold">{discountPrice}$</h2>
           <p className="text-center font-medium line-through">{price}$</p>
         </div>
-        <button className="h-[60px] w-[300px] bg-amber-300 text-xl font-semibold text-white transition-all hover:bg-blue-700">
+        <button
+          onClick={() => addToCart(currentProduct!)}
+          className="h-[60px] w-[300px] bg-amber-300 text-xl font-semibold text-white drop-shadow-lg transition-all hover:bg-blue-700"
+        >
           Add to Card
         </button>
       </div>

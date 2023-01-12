@@ -12,7 +12,10 @@ export const useProductStore = create<ProductState>()((set, get) => ({
     axios
       .get<any>(`https://dummyjson.com/products/${productId}`)
       .then(({ data }) => {
-        set({ currentProduct: data, status: Status.SUCCESS });
+        set({
+          currentProduct: data,
+          status: Status.SUCCESS,
+        });
       })
       .catch((error) => {
         set({ status: Status.FAILURE });

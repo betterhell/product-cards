@@ -10,6 +10,13 @@ export interface ProductsState {
   getAllProducts: () => void;
 }
 
+export interface CartState {
+  cart: Product[] | [];
+  counter: number;
+  status: Status;
+  addToCart: (product: Product) => void;
+}
+
 export interface Product {
   id: number;
   title: string;
@@ -21,6 +28,7 @@ export interface Product {
   category: string;
   description: string;
   images: string[];
+  quantity: number;
 }
 
 export enum Status {
