@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { RiShoppingCartLine } from "react-icons/ri";
+import { RiShoppingCartLine, RiShoppingCartFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import Cart from "./Cart";
+import { useCartStore } from "../store/cart.store";
 
 const Navigation = () => {
+  const { cart } = useCartStore();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -15,8 +17,17 @@ const Navigation = () => {
           </button>
         </NavLink>
         <div>
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <RiShoppingCartLine size={20} color="white" />
+          <button className="relative" onClick={() => setIsOpen(!isOpen)}>
+            {cart.length !== 0 ? (
+              <>
+                <RiShoppingCartFill size={30} />
+                <p className="absolute right-[-8px] top-0 w-5 rounded-3xl border-2 bg-red-600 text-xs font-thin">
+                  {cart.length}
+                </p>
+              </>
+            ) : (
+              <RiShoppingCartLine size={30} />
+            )}
           </button>
         </div>
       </div>

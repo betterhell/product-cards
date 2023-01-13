@@ -21,9 +21,7 @@ const CartItem = ({
   };
 
   const ItemCountDecrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+    setCount(count - 1);
   };
 
   const discountPrice =
@@ -31,11 +29,17 @@ const CartItem = ({
       ? (price - (price / 100) * discountPercentage).toFixed()
       : price;
 
+  if (count < 1) {
+    deleteFromCart(id);
+  }
+
   return (
-    <div className="relative mx-2 flex items-center justify-center gap-2 border-2 px-2">
+    <div className="gap-x- relative mx-2 flex items-center justify-center border-2">
       <img className="max-h-[80px] max-w-[80px]" src={images[0]} alt="" />
-      <h2 className="text-md">{title}</h2>
-      <h2 className="text-lg font-bold">{discountPrice}$</h2>
+      <div>
+        <h2 className="text-md">{title}</h2>
+        <h2 className="text-lg font-bold">{discountPrice}$</h2>
+      </div>
       <div className="flex items-center">
         <p className="rounded-3xl bg-gray-200 px-2">{count}</p>
         <div className="flex flex-col">

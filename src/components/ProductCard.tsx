@@ -60,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col justify-between border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
         <div style={styles} className="flex">
           {images?.map((image, index) => (
@@ -82,7 +82,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <NavLink to={`/product/${id}`}>
-        <h1 className="text-center text-lg font-bold">{title}</h1>
+        <h1 className="mt-5 text-center text-lg font-bold">{title}</h1>
       </NavLink>
       <div className="flex justify-center gap-3">
         <h2 className="text-xl font-bold">{discountPrice}</h2>
@@ -90,8 +90,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <p className="">{description}</p>
-
-      <AddToCartButton addToCart={addToCart} currentProduct={currentProduct!} />
 
       {images.length < 2 ? null : (
         <div className="bg-black ">
