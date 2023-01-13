@@ -46,7 +46,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="item justify h-max-[300px] relative m-1 flex w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
-        <div style={styles} className="flex h-[250px] align-baseline">
+        <div
+          style={styles}
+          className="flex h-[250px] items-center align-baseline"
+        >
           {product.images?.map((image, index) => (
             <img key={index} className="w-[250px]" src={image} alt="" />
           ))}
