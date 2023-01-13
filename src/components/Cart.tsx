@@ -1,33 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCartStore } from "../store/cart.store";
+import CartItem from "../UI/CartItem";
 import { Product } from "../models/models";
 
-const Cart = () => {
-  const { cart, counter } = useCartStore();
+interface CartProps {
+  visible: boolean;
+}
+
+const Cart: React.FC<CartProps> = ({ visible }) => {
+  const { cart } = useCartStore();
+  // const [total, setTotal] = useState({
+  //   price: cart.reduce((acc: number, value: Product) => {
+  //     return acc + value.price;
+  //   }, 0),
+  //   count: 5,
+  // });
 
   return (
-    <div className="fixed top-[60px] right-5 z-10 flex h-[600px] w-[300px] flex-col border-2 bg-white">
-      <h3 className=" text-center text-2xl">Shopping Cart</h3>
+    <div
+      className={`${
+        visible ? "right-5" : "right-[-1000px]"
+      } fixed top-[60px] z-10 flex h-[400px] w-[300px] ${
+        cart.length > 3 && "overflow-y-auto"
+      } flex-col overflow-hidden border-2 bg-white transition-all`}
+    >
+      <h3 className="mb-5 text-center text-2xl">Shopping Cart</h3>
       <div className="flex flex-col gap-3 ">
-        {cart !== null ? (
+        <p>total:</p>
+        {cart.length !== 0 ? (
           cart.map((product, index) => (
-            <div
-              className="mx-2 flex items-center justify-between border-2"
+            <CartItem
               key={index}
-            >
-              <img
-                className="max-h-[80px] max-w-[80px]"
-                src={product.images[0]}
-                alt=""
-              />
-              <h2 className="text-lg">{product.title}</h2>
-              <p>{counter}</p>
-              <button>+</button>
-              <button>-</button>
-            </div>
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              discountPercentage={product.discountPercentage}
+              stock={product.stock}
+              images={product.images}
+              quantity={product.quantity}
+            />
           ))
         ) : (
-          <h1 className="text-black">Корзина пуста</h1>
+          <h1 className="text-center text-black">Cart is empty :(</h1>
         )}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import create from "zustand";
 import { CartState, Status } from "../models/models";
+import product from "../components/Product";
 
 export const useCartStore = create<CartState>()((set, get) => ({
   cart: [],
@@ -8,6 +9,7 @@ export const useCartStore = create<CartState>()((set, get) => ({
 
   addToCart: (product) => {
     const itemInCart = get().cart.find((item) => item.id === product.id);
+
     if (itemInCart) {
       set((state) => ({ counter: state.counter + 1 }));
     } else {
@@ -15,5 +17,11 @@ export const useCartStore = create<CartState>()((set, get) => ({
         cart: [...state.cart, product],
       }));
     }
+  },
+
+  deleteFromCart: (productId) => {
+    const FilteredCart = get().cart.filter((item) => item.id !== productId);
+
+    set({ cart: FilteredCart });
   },
 }));

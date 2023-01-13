@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Product } from "../models/models";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+import AddToCartButton from "../UI/AddToCartButton";
+import { useProductStore } from "../store/product.store";
+import { useCartStore } from "../store/cart.store";
+import { useProductsStore } from "../store/products.store";
 
 interface ProductCardProps {
   product: Product;
@@ -10,6 +14,8 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
 
+  const { currentProduct } = useProductStore();
+  const { addToCart } = useCartStore();
   const {
     id,
     images,
@@ -54,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col justify-between border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
         <div style={styles} className="flex">
           {images?.map((image, index) => (
@@ -84,6 +90,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <p className="">{description}</p>
+
+      <AddToCartButton addToCart={addToCart} currentProduct={currentProduct!} />
 
       {images.length < 2 ? null : (
         <div className="bg-black ">

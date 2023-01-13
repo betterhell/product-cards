@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import Cart from "./Cart";
-import { useCartStore } from "../store/cart.store";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <div className="fixed  z-10 flex h-[40px] w-full items-center justify-between bg-gray-500 px-5 text-2xl font-semibold text-white">
+      <div className="fixed z-10 flex h-[40px] w-full items-center justify-between bg-gray-500 px-5 text-2xl font-semibold text-white">
         <NavLink to="/">
           <button>
             <h1>Store</h1>
@@ -21,7 +20,7 @@ const Navigation = () => {
           </button>
         </div>
       </div>
-      {isOpen ? <Cart /> : null}
+      {isOpen ? <Cart visible={isOpen} /> : <Cart visible={isOpen} />}
     </>
   );
 };

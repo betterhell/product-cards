@@ -15,6 +15,7 @@ export interface CartState {
   counter: number;
   status: Status;
   addToCart: (product: Product) => void;
+  deleteFromCart: (productId: number) => void;
 }
 
 export interface Product {
