@@ -20,8 +20,9 @@ const Product = () => {
   return (
     <div className="item my-20 flex h-[700px] w-full flex-col items-center p-5 lg:flex-row lg:justify-around lg:border-2">
       <div className="flex gap-3">
-        <div className="mb-10 flex h-[600px] w-[600px] lg:mb-0">
+        <div className="m mb-10 flex h-[600px] w-[600px] items-center justify-center lg:mb-0">
           <img
+            className="max-h-[500px]"
             src={currentProduct!.images[currentSliderIndex]}
             alt={currentProduct?.title}
           />

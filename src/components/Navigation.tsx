@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RiShoppingCartLine, RiShoppingCartFill } from "react-icons/ri";
+import { RiShoppingCartFill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 import { useCartStore } from "store/cart.store";
@@ -26,9 +26,7 @@ const Navigation = () => {
                   {items.length}
                 </p>
               </>
-            ) : (
-              <RiShoppingCartLine size={30} />
-            )}
+            ) : null}
           </button>
         </div>
       </div>

@@ -11,7 +11,7 @@ export const useProductsStore = create<ProductsState>()((set) => ({
   getAllProducts: () => {
     set({ status: Status.PENDING });
     axios
-      .get<any>("https://dummyjson.com/products")
+      .get<any>("https://dummyjson.com/products?limit=20")
       .then(({ data }) => {
         set({ allProducts: data.products, status: Status.SUCCESS });
       })
