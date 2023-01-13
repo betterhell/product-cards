@@ -4,12 +4,16 @@ import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
 import { getPriceOfProduct } from "utils/price";
 import { Product } from "types/product";
+import AddToCartButton from "../UI/AddToCartButton";
+import { useCartStore } from "../store/cart.store";
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { addToCart } = useCartStore();
+
   const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
 
   const nextSlideToggle = () => {
@@ -40,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="item relative m-1 flex h-[500px] max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item justify relative m-1 flex h-fit max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
         <div style={styles} className="flex">
           {product.images?.map((image, index) => (
@@ -61,18 +65,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      <NavLink to={`/product/${product.id}`}>
-        <h1 className="mt-5 text-center text-lg font-bold">{product.title}</h1>
-      </NavLink>
-      <div className="flex justify-center gap-3">
-        <h2 className="text-xl font-bold">{price}</h2>
-        <h3 className="line-through">{product.price}$</h3>
+      <div className="flex h-fit flex-col justify-end">
+        <NavLink to={`/product/${product.id}`}>
+          <h1 className="text-center text-lg font-bold">{product.title}</h1>
+        </NavLink>
+        <div className="flex justify-center gap-3">
+          <h2 className="text-xl font-bold text-green-500">{price} $</h2>
+          <h3 className="text-red-500 line-through">{product.price} $</h3>
+        </div>
+        <div className="mt-5">
+          <AddToCartButton addToCart={addToCart} currentProduct={product} />
+        </div>
       </div>
-
-      <p className="">{product.description}</p>
-
       {product.images.length < 2 ? null : (
-        <div className="bg-black ">
+        <div className="bg-black">
           <button
             onClick={prevSlideToggle}
             className="absolute top-4 left-0 h-[250px] w-4 cursor-pointer bg-gray-100 transition-all hover:bg-gray-300"
