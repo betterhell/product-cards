@@ -1,5 +1,6 @@
 import React from "react";
-import { Product } from "../models/models";
+
+import { Product } from "types/product";
 
 interface addToCartButton {
   addToCart: (currentProduct: Product) => void;

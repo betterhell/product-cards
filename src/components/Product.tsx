@@ -1,32 +1,17 @@
-import { useProductStore } from "../store/product.store";
 import React, { useState } from "react";
-import { useCartStore } from "../store/cart.store";
-import CartItem from "../UI/CartItem";
-import AddToCartButton from "../UI/AddToCartButton";
+
+import { useProductStore } from "store/product.store";
+import { useCartStore } from "store/cart.store";
+import AddToCartButton from "UI/AddToCartButton";
+import { getPriceOfProduct } from "utils/price";
 
 const Product = () => {
   const { currentProduct } = useProductStore();
-  const { addToCart, counter } = useCartStore();
+  const { addToCart } = useCartStore();
 
   const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
 
-  const {
-    id,
-    images,
-    title,
-    price,
-    category,
-    brand,
-    description,
-    rating,
-    stock,
-    discountPercentage,
-  } = currentProduct!;
-
-  const discountPrice =
-    discountPercentage !== null
-      ? (price - (price / 100) * discountPercentage).toFixed()
-      : price;
+  const price = currentProduct ? getPriceOfProduct(currentProduct) : null;
 
   const selectCurrentSlide = (index: number) => {
     setCurrentSliderIndex(index);
@@ -35,11 +20,13 @@ const Product = () => {
   return (
     <div className="item my-20 flex h-[700px] w-full flex-col items-center p-5 lg:flex-row lg:justify-around lg:border-2">
       <div className="flex gap-3">
-        <div className="mb-10 flex max-w-[600px] lg:mb-0">
-          <img src={images[currentSliderIndex]} alt={currentProduct?.title} />
+        <div className="mb-10 flex h-[600px] w-[600px] lg:mb-0">
+          <img
+            src={currentProduct!.images[currentSliderIndex]}
+            alt={currentProduct?.title}
+          />
         </div>
-
-        {images.length < 2 ? null : (
+        {currentProduct!.images.length < 2 ? null : (
           <div className="flex h-[60px] w-[60px] flex-col gap-5">
             {currentProduct?.images.map((image, index) => (
               <button
@@ -47,19 +34,27 @@ const Product = () => {
                 key={index}
                 onClick={() => selectCurrentSlide(index)}
               >
-                <img src={image} alt={title} />
+                <img src={image} alt={currentProduct.title} />
               </button>
             ))}
           </div>
         )}
       </div>
 
-      <div className="flex max-w-[600px] flex-col items-center justify-center pb-20">
-        <h1 className="mb-10 text-center text-6xl font-bold">{title}</h1>
-        <p className="mb-10 text-center font-medium">{description}</p>
+      <div className="flex max-w-[600px]  flex-col items-center pb-20">
+        <h1 className="mb-10 text-center text-6xl font-bold">
+          {currentProduct!.title}
+        </h1>
+        <p className="mb-10 text-center font-medium">
+          {currentProduct!.description}
+        </p>
         <div className="mb-10 flex justify-center gap-5">
-          <h2 className="text-center text-6xl font-bold">{discountPrice}$</h2>
-          <p className="text-center font-medium line-through">{price}$</p>
+          <h2 className="text-center text-6xl font-bold text-green-500">
+            {price}$
+          </h2>
+          <p className="text-center font-medium text-red-500 line-through">
+            {currentProduct!.price}$
+          </p>
         </div>
         <AddToCartButton
           addToCart={addToCart}

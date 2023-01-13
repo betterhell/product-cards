@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Status } from "../models/models";
-import Products from "../components/Products";
-import { useProductsStore } from "../store/products.store";
+
+import Products from "components/Products";
+import { useProductsStore } from "store/products.store";
+import { Status } from "types/status";
 
 const ProductsPage = () => {
   const { status, getAllProducts } = useProductsStore();

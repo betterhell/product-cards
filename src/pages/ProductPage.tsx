@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Status } from "../models/models";
-import { useProductStore } from "../store/product.store";
 import { useParams } from "react-router-dom";
-import Product from "../components/Product";
+
+import { useProductStore } from "store/product.store";
+import Product from "components/Product";
+import { Status } from "types/status";
 
 const ProductsPage = () => {
   const { status, getCurrentProduct } = useProductStore();

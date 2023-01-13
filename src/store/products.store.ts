@@ -1,6 +1,8 @@
 import create from "zustand";
 import axios from "axios";
-import { ProductsState, Status } from "../models/models";
+
+import { ProductsState } from "types/products";
+import { Status } from "types/status";
 
 export const useProductsStore = create<ProductsState>()((set) => ({
   allProducts: null,

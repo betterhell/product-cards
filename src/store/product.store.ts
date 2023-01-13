@@ -1,8 +1,10 @@
 import create from "zustand";
 import axios from "axios";
-import { ProductState, Status } from "../models/models";
 
-export const useProductStore = create<ProductState>()((set, get) => ({
+import { ProductState } from "types/product";
+import { Status } from "types/status";
+
+export const useProductStore = create<ProductState>()((set) => ({
   currentProduct: null,
   status: Status.NONE,
 
