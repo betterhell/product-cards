@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="item justify relative m-1 flex h-fit max-w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item justify h-max-[300px] relative m-1 flex w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
       <div className="flex justify-center overflow-hidden">
         <div style={styles} className="flex">
           {product.images?.map((image, index) => (
