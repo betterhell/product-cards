@@ -53,12 +53,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         {product.images.length < 2 ? null : (
-          <div className="absolute bottom-[230px] top-4 flex w-full justify-center px-4">
+          <div className="absolute bottom-[230px] top-4 flex h-[250px] w-full justify-center px-4">
             {product.images.map((button, index) => (
               <button
                 onMouseEnter={() => selectCurrentSlide(index)}
                 key={index}
-                className="w-full border-orange-500 bg-transparent transition-all hover:border-b-4"
+                className="w-[500px] border-orange-500 bg-transparent transition-all hover:border-b-4"
               ></button>
             ))}
           </div>
