@@ -7,6 +7,7 @@ import Cart from "./Cart";
 
 const Navigation = () => {
   const { items } = useCartStore();
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -18,7 +18,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, count }) => {
   const price = getPriceOfProduct(product);
 
   return (
-    <div className="item-center relative mx-2 flex justify-between gap-5 border-2 p-2">
+    <div className="item-center relative mx-2 flex justify-between gap-5 rounded-2xl border-2 p-2 shadow-lg">
       <img
         className="max-h-[80px] max-w-[80px]"
         src={product.images[0]}

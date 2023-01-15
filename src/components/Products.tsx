@@ -5,8 +5,6 @@ import ProductCard from "./ProductCard";
 const Products = () => {
   const { allProducts } = useProductsStore();
 
-  console.log(allProducts);
-
   return (
     <div className="container flex flex-wrap justify-center gap-5">
       {allProducts?.map((product: Product) => (

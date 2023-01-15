@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const price = getPriceOfProduct(product);
 
   return (
-    <div className="item justify h-max-[300px] relative m-1 flex w-[280px] flex-col border-2 p-4 transition-all hover:shadow-xl ">
+    <div className="item h-max-[300px] relative m-1 flex w-[280px] flex-col justify-between border-2 p-4 transition-all hover:shadow-lg ">
       <Slider product={product} />
 
       <div className="flex h-fit flex-col justify-end">

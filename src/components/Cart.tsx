@@ -16,10 +16,8 @@ const Cart: React.FC<CartProps> = ({ visible }) => {
   return (
     <div
       className={`${
-        items.length !== 0 && visible ? "right-5" : "right-[-1000px]"
-      } fixed top-[60px] z-10 flex h-[400px] w-[300px] ${
-        items.length > 3 && "overflow-y-auto"
-      } flex-col overflow-hidden border-2 bg-white transition-all`}
+        items.length !== 0 && visible ? "right-5 " : "right-[-1000px]"
+      } fixed top-[60px] z-10 flex h-[400px] w-[500px] flex-col overflow-auto border-2 bg-white p-2 shadow-lg transition-all`}
     >
       <h3 className="mb-5 text-center text-2xl">Shopping Cart</h3>
       <div className="flex flex-col gap-3 ">
