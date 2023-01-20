@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Product } from "types/product";
+import { Button } from "@mui/material";
 
 interface addToCartButton {
   addToCart: (currentProduct: Product) => void;
@@ -12,12 +13,13 @@ const AddToCartButton: React.FC<addToCartButton> = ({
   currentProduct,
 }) => {
   return (
-    <button
+    <Button
+      variant="contained"
       onClick={() => addToCart(currentProduct!)}
       className="h-[60px] w-full bg-amber-300 text-xl font-semibold text-white drop-shadow-lg transition-all hover:bg-blue-700"
     >
       Add to Cart
-    </button>
+    </Button>
   );
 };
 

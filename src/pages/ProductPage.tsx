@@ -16,7 +16,7 @@ const ProductsPage = () => {
   }, [getCurrentProduct, id]);
 
   return (
-    <div className="container mx-auto flex justify-center pt-5">
+    <div className="container mx-auto flex items-center justify-center pt-5">
       {status === Status.PENDING && <h1>Loading...</h1>}
       {status === Status.SUCCESS && <Product />}
       {status === Status.FAILURE && <h1>Something wrong, try again later</h1>}

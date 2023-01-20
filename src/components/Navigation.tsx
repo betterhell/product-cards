@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { useCartStore } from "store/cart.store";
 import Cart from "./Cart";
+import { IconButton } from "@mui/material";
 
 const Navigation = () => {
   const { items } = useCartStore();
@@ -19,16 +20,16 @@ const Navigation = () => {
           </button>
         </NavLink>
         <div>
-          <button className="relative" onClick={() => setIsOpen(!isOpen)}>
+          <IconButton className="relative" onClick={() => setIsOpen(!isOpen)}>
             {items.length !== 0 ? (
               <>
-                <RiShoppingCartFill size={30} />
-                <p className="absolute right-[-8px] top-0 w-5 rounded-3xl border-2 bg-red-600 text-xs font-thin">
+                <RiShoppingCartFill color="white" size={25} />
+                <p className="absolute right-[-3px] top-0 w-5 rounded-3xl border-2 bg-red-400 text-xs font-thin text-white">
                   {items.length}
                 </p>
               </>
             ) : null}
-          </button>
+          </IconButton>
         </div>
       </div>
       {isOpen ? <Cart visible={isOpen} /> : <Cart visible={isOpen} />}
